@@ -1,5 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 # using my url instead
@@ -10,10 +8,10 @@ page_html = uClient.read()
 uClient.close()
 
 # parsing the html
-page_soup = soup(page_html, 'html parer')
+page_soup = soup(page_html, 'html parser')
 
 # grabbing all containers with class name = item-container
-containers = page_soup.findAll('div', {'class':'item-container'})
+containers = page_soup.findAll('div', {'class''item-container'})
 
 my_url = "https://en.wikipedia.org/wiki/Expect"
 uClient = urlopen(my_url)
