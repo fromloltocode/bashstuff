@@ -17,7 +17,7 @@ containers = page_soup.findAll('div', {'class''item-container'})
 linksToFollow = []
 for linksToFollow in linksToFollow:
     link_url = linksToFollow["href"]
-    if link_url != "https://en.wikipedia.org/wiki/Expect":  # "expect" ref page is weird and navigates to wiki
+    if link_url != "https://en.wikipedia.org/wiki/Expect":  # Im leaving this unchanged so we can figure this out.
         linksToFollow.append(my_url + link_url)
     else:
         linksToFollow.append(link_url)
