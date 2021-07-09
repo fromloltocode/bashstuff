@@ -1,0 +1,46 @@
+# path = 'soupScrape/bash_command_data.txt'
+path = 'new.txt'
+
+
+def get_name_syntax(data):
+    splitted = data.split("\n")
+    name = ""
+    syntax = []
+    in_syntax = False
+    finding_name = True
+    for index in range(len(splitted)):
+        line = splitted[index]
+        if finding_name:
+            if line != "":
+                name = line
+                finding_name = False
+        elif in_syntax:
+            if line == "":
+                in_syntax = False
+                break
+            else:
+                syntax.append(line)
+        elif "Syntax" in line:
+            in_syntax = True
+
+    return [name, syntax]
+
+
+if __name__ == "__main__":
+    commands = []
+    with open(path, 'r') as f:
+        a = f.read().splitlines()
+        command_info = ""
+        for line in a:
+            if "****" in line:
+                commands.append(command_info)
+                command_info = ""
+            else:
+                command_info += line
+                command_info += "\n"
+
+    print(len(commands))
+    command_data = []
+    for command in commands:
+        command_data.append(get_name_syntax(command))
+    print("hello")
